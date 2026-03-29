@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Cosmic Modals Mission</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-pink: #ff7eb3; --space-blue: #8ec5fc; --star-gold: #ffd700;
+            --nebula-purple: #e0c3fc; --bg-soft: #f8f9ff;
+        }
+        body {
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            background-attachment: fixed; color: #4a4a4a; font-family: 'Quicksand', sans-serif;
+            margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+        .container {
+            max-width: 700px; width: 90%; background: rgba(255, 255, 255, 0.95);
+            padding: 30px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 4px solid var(--space-blue); position: relative;
+        }
+        h1 { font-family: 'Fredoka One', cursive; color: #5d5dff; text-align: center; margin-top: 0; }
+        .progress-bar { width: 100%; height: 12px; background: #eee; border-radius: 10px; margin-bottom: 25px; overflow: hidden; }
+        #progress-fill { height: 100%; background: linear-gradient(90deg, var(--space-pink), var(--space-blue)); width: 5%; transition: 0.5s; }
+        
+        .section { display: none; animation: fadeIn 0.6s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .instruction-box { background: var(--nebula-purple); padding: 12px; border-radius: 15px; text-align: center; font-weight: bold; margin-bottom: 20px; color: #6b4ca0; border: 1px solid #c8b0f5; }
+        .card { background: white; padding: 20px; border-radius: 20px; border: 2px dashed var(--space-blue); margin-bottom: 20px; }
+        .cosmic-icon { font-size: 3em; text-align: center; display: block; margin-bottom: 10px; }
+        
+        select, input[type="text"] { 
+            padding: 8px; border-radius: 10px; border: 2px solid var(--space-blue); 
+            font-family: 'Quicksand'; font-weight: bold; color: #5d5dff; outline: none;
+        }
+        input[type="text"] { width: 50%; text-align: center; }
+
+        .btn { 
+            background: var(--space-blue); color: white; border: none; padding: 15px 30px; 
+            border-radius: 50px; font-family: 'Fredoka One'; cursor: pointer; width: 100%; 
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(142,197,252,0.4);
+        }
+        .btn:hover { transform: scale(1.03); background: #5da9f8; }
+        #message { text-align: center; margin-top: 15px; font-weight: bold; min-height: 24px; }
+
+        .riddle-text { font-style: italic; font-size: 1.1em; line-height: 1.5; color: #444; margin-bottom: 15px; display: block; }
+        
+        #final-score { font-size: 2em; color: var(--space-pink); font-family: 'Fredoka One'; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Cosmic Journey</h1>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+
+    <div class="section active" id="step1">
+        <div class="instruction-box">LEVEL 1: PRE-FLIGHT CHECK</div>
+        <span class="cosmic-icon">🚀</span>
+        <div class="card">
+            <p>1. To start, you <select id="q1"><option value="">...</option><option value="must">must</option><option value="might">might</option></select> push the green lever.</p>
+            <p>2. You <select id="q2"><option value="">...</option><option value="must not">must not</option><option value="don't have to">don't have to</option></select> open windows in space!</p>
+        </div>
+        <button class="btn" onclick="checkStep(1)">LAUNCH SHIP</button>
+    </div>
+
+    <div class="section" id="step2">
+        <div class="instruction-box">LEVEL 2: PLANET EXPLORATION</div>
+        <span class="cosmic-icon">🪐</span>
+        <div class="card">
+            <p>3. It's cold! You <select id="q3"><option value="">...</option><option value="should">should</option><option value="could">could</option></select> wear a suit.</p>
+            <p>4. Those rocks <select id="q4"><option value="">...</option><option value="might">might</option><option value="would">would</option></select> be diamonds, maybe.</p>
+        </div>
+        <button class="btn" onclick="checkStep(2)">EXPLORE FURTHER</button>
+    </div>
+
+    <div class="section" id="step3">
+        <div class="instruction-box">LEVEL 3: ALIEN CONTACT</div>
+        <span class="cosmic-icon">👽</span>
+        <div class="card">
+            <p>5. <select id="q5"><option value="">...</option><option value="Would">Would</option><option value="Should">Should</option></select> you like to say hello?</p>
+            <p>6. He <select id="q6"><option value="">...</option><option value="can">can</option><option value="ought to">ought to</option></select> speak with sounds.</p>
+        </div>
+        <button class="btn" onclick="checkStep(3)">COMMUNICATE</button>
+    </div>
+
+    <div class="section" id="step4">
+        <div class="instruction-box">LEVEL 4: THE MOON LANDING</div>
+        <span class="cosmic-icon">🌎</span>
+        <div class="card">
+            <p>7. I <select id="q7"><option value="">...</option><option value="was able to">was able to</option><option value="could">could</option></select> land safely yesterday.</p>
+            <p>8. We <select id="q8"><option value="">...</option><option value="have to">have to</option><option value="may">may</option></select> write a report now.</p>
+        </div>
+        <button class="btn" onclick="checkStep(4)">ENTER THE VOID</button>
+    </div>
+
+    <div class="section" id="step5">
+        <div class="instruction-box">LEVEL 5: THE DEEP VOID (Logic Check)</div>
+        <span class="cosmic-icon">🌌</span>
+        <div class="card">
+            <p>9. The engine fixed itself, so we <select id="q9"><option value="">...</option><option value="won't have to">won't have to</option><option value="will have to">will have to</option></select> repair it.</p>
+            <p>10. The storm was strong; the robot <select id="q10"><option value="">...</option><option value="was able to">was able to</option><option value="wasn't able to">wasn't able to</option></select> collect rocks.</p>
+            <p>11. To enter the lab, you <select id="q11"><option value="">...</option><option value="have to">have to</option><option value="don't have to">don't have to</option></select> scan your finger.</p>
+            <p>12. It's a holiday! We <select id="q12"><option value="">...</option><option value="have to">have to</option><option value="don't have to">don't have to</option></select> work today.</p>
+        </div>
+        <button class="btn" onclick="checkStep(5)">MEET THE SPHINX</button>
+    </div>
+
+    <div class="section" id="rid1">
+        <div class="instruction-box">RIDDLE 1: THE LAW</div>
+        <div class="card">
+            <span class="riddle-text">"I am strong and firm, I leave no choice,<br>In rules and laws, you hear my voice.<br>If you enter the ship, you _____ have a key."</span>
+            <input type="text" id="ans1" placeholder="Answer...">
+        </div>
+        <button class="btn" onclick="checkRiddle(1, 'must')">SOLVE</button>
+    </div>
+
+    <div class="section" id="rid2">
+        <div class="instruction-box">RIDDLE 2: THE ADVISOR</div>
+        <div class="card">
+            <span class="riddle-text">"I am not a command, just friendly light.<br>'You _____ wear a coat,' I softly say."</span>
+            <input type="text" id="ans2" placeholder="Answer...">
+        </div>
+        <button class="btn" onclick="checkRiddle(2, 'should')">SOLVE</button>
+    </div>
+
+    <div class="section" id="rid3">
+        <div class="instruction-box">RIDDLE 3: THE CHANCE</div>
+        <div class="card">
+            <span class="riddle-text">"I am a shadow, a 'maybe' in the sky.<br>It _____ rain stars, or it _____ stay dry."</span>
+            <input type="text" id="ans3" placeholder="Answer...">
+        </div>
+        <button class="btn" onclick="checkRiddle(3, ['might', 'may'])">SOLVE</button>
+    </div>
+
+    <div class="section" id="rid4">
+        <div class="instruction-box">RIDDLE 4: OLD POWERS</div>
+        <div class="card">
+            <span class="riddle-text">"In days of old, I had the power.<br>I _____ swim in stars when I was young."</span>
+            <input type="text" id="ans4" placeholder="Answer...">
+        </div>
+        <button class="btn" onclick="checkRiddle(4, 'could')">SOLVE</button>
+    </div>
+
+    <div class="section" id="rid5">
+        <div class="instruction-box">RIDDLE 5: KINDNESS</div>
+        <div class="card">
+            <span class="riddle-text">"The kindest word that you can find.<br>'_____ you help me fix this wing?'"</span>
+            <input type="text" id="ans5" placeholder="Answer...">
+        </div>
+        <button class="btn" onclick="calculateFinalScore()">SUBMIT MISSION</button>
+    </div>
+
+    <div class="section" id="victory" style="text-align: center;">
+        <span class="cosmic-icon">🏆</span>
+        <h2>MISSION REPORT</h2>
+        <div id="final-score">0%</div>
+        <p id="rank-text"></p>
+        <button class="btn" onclick="location.reload()">REPLAY ADVENTURE</button>
+    </div>
+
+    <div id="message"></div>
+</div>
+
+<script>
+    let totalAttempts = 0;
+    let errors = 0; // Each time they get a 'wrong', we could track it, but for a 100% score based on correct slots:
+    const totalQuestions = 17; // 12 selects + 5 riddles
+
+    const correctAnswers = {
+        q1:"must", q2:"must not", q3:"should", q4:"might", q5:"Would", q6:"can", 
+        q7:"was able to", q8:"have to", q9:"won't have to", q10:"wasn't able to", 
+        q11:"have to", q12:"don't have to"
+    };
+
+    function checkStep(s) {
+        let ok = true;
+        if(s===1 && (document.getElementById('q1').value!==correctAnswers.q1 || document.getElementById('q2').value!==correctAnswers.q2)) ok=false;
+        if(s===2 && (document.getElementById('q3').value!==correctAnswers.q3 || document.getElementById('q4').value!==correctAnswers.q4)) ok=false;
+        if(s===3 && (document.getElementById('q5').value!==correctAnswers.q5 || document.getElementById('q6').value!==correctAnswers.q6)) ok=false;
+        if(s===4 && (document.getElementById('q7').value!==correctAnswers.q7 || document.getElementById('q8').value!==correctAnswers.q8)) ok=false;
+        if(s===5 && (document.getElementById('q9').value!==correctAnswers.q9 || document.getElementById('q10').value!==correctAnswers.q10 || document.getElementById('q11').value!==correctAnswers.q11 || document.getElementById('q12').value!==correctAnswers.q12)) ok=false;
+
+        processResult(ok, s, 'step');
+    }
+
+    function checkRiddle(num, correct) {
+        let val = document.getElementById('ans'+num).value.toLowerCase().trim();
+        let ok = Array.isArray(correct) ? correct.includes(val) : val === correct;
+        processResult(ok, num, 'rid');
+    }
+
+    function processResult(isOk, currentId, type) {
+        let m = document.getElementById('message');
+        if(isOk) {
+            m.style.color = "green"; m.innerHTML = "✨ System Validated!";
+            setTimeout(() => {
+                m.innerHTML = "";
+                document.getElementById(type + currentId).classList.remove('active');
+                let nextSection = (type === 'step') ? (currentId < 5 ? 'step' + (currentId + 1) : 'rid1') : 'rid' + (currentId + 1);
+                document.getElementById(nextSection).classList.add('active');
+                updateProgress(type, currentId);
+            }, 800);
+        } else {
+            errors++; // Track errors to potentially penalize percentage if you want, but here we assume 100% on completion.
+            m.style.color = "red"; m.innerHTML = "❌ Logic Error. Try again!";
+        }
+    }
+
+    function calculateFinalScore() {
+        // Validation for final riddle before submitting
+        let val5 = document.getElementById('ans5').value.toLowerCase().trim();
+        if (val5 !== 'would') {
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').innerHTML = "❌ Solve the final riddle first!";
+            return;
+        }
+
+        // Percentage Logic: (Questions - Errors) / Total * 100. 
+        // Or simply 100% because they can't pass without correct answers.
+        // Let's use a "Performance Accuracy" based on errors made during the trip.
+        let accuracy = Math.max(0, Math.round(((totalQuestions - errors) / totalQuestions) * 100));
+        
+        document.getElementById('rid5').classList.remove('active');
+        document.getElementById('victory').classList.add('active');
+        document.getElementById('progress-fill').style.width = "100%";
+        document.getElementById('final-score').innerHTML = accuracy + "% Accuracy";
+        
+        let rank = "";
+        if(accuracy === 100) rank = "Rank: Galactic Legend 🌟";
+        else if(accuracy > 80) rank = "Rank: Space Captain 👨‍✈️";
+        else if(accuracy > 50) rank = "Rank: Star Explorer 🔭";
+        else rank = "Rank: Space Cadet 🛰️";
+        
+        document.getElementById('rank-text').innerHTML = rank + "<br>Based on your logic attempts.";
+    }
+
+    function updateProgress(type, id) {
+        let totalStages = 10;
+        let current = (type === 'step') ? id : 5 + id;
+        document.getElementById('progress-fill').style.width = (current / totalStages * 100) + "%";
+    }
+</script>
+</body>
+</html>
