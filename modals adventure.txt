@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electra Ruins: Modals Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-neon: #00f2ff;
+            --secondary-neon: #7000ff;
+            --danger-neon: #ff0055;
+            --bg-dark: #0a0b10;
+            --card-bg: #161b22;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #e6edf3;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid var(--primary-neon);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 15px;
+        }
+
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        h1 { color: var(--primary-neon); text-shadow: 0 0 10px var(--primary-neon); }
+        h2 { color: var(--secondary-neon); border-bottom: 1px solid var(--secondary-neon); padding-bottom: 10px; margin-top: 40px; }
+
+        .mission-box {
+            background: rgba(112, 0, 255, 0.1);
+            border-left: 5px solid var(--secondary-neon);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .challenge-card {
+            background: #1c2128;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+
+        .challenge-card:hover {
+            transform: scale(1.02);
+            border-color: var(--primary-neon);
+        }
+
+        .instructions {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-neon);
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--primary-neon);
+        }
+
+        select {
+            background: #0d1117;
+            color: var(--primary-neon);
+            border: 1px solid var(--primary-neon);
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: var(--danger-neon);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .check-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            color: var(--primary-neon);
+            border: 2px solid var(--primary-neon);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
+        .check-btn:hover {
+            background: var(--primary-neon);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--primary-neon);
+        }
+
+        .illustration {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #161b22, #30363d);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 Electra Ruins Adventure</h1>
+    <p style="text-align: center;">Mission: Master the Modals to Escape the City!</p>
+
+    <div class="instructions">
+        SYSTEM OVERRIDE: Select the correct Modal or Semi-modal to unlock the next chamber. 
+        Read the scenarios carefully, Explorer!
+    </div>
+
+    <section>
+        <h2>Challenge 1: The Control Panel</h2>
+        <div class="illustration">📟</div>
+        <div class="challenge-card">
+            <span class="status-badge">Danger Level: High</span>
+            <p>1. The blue button is glowing. It 
+                <select id="q1">
+                    <option value="">--choose--</option>
+                    <option value="must">must</option>
+                    <option value="can't">can't</option>
+                </select> be the power switch because the lights are flickering.</p>
+            
+            <p>2. The red button has a skull icon. We 
+                <select id="q2">
+                    <option value="">--choose--</option>
+                    <option value="don't have to">don't have to</option>
+                    <option value="must not">must not</option>
+                </select> press it under any circumstances!</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Challenge 2: Zero Gravity Chamber</h2>
+        <div class="illustration">👨‍🚀</div>
+        <div class="challenge-card">
+            <p>3. Be careful! The oxygen levels are low. We 
+                <select id="q3">
+                    <option value="">--choose--</option>
+                    <option value="could">could</option>
+                    <option value="would">would</option>
+                </select> run out of air if we stay too long.</p>
+            
+            <p>4. In this room, we 
+                <select id="q4">
+                    <option value="">--choose--</option>
+                    <option value="can">can</option>
+                    <option value="should">should</option>
+                </select> move heavy objects easily because there is no gravity.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Challenge 3: Fixing Pixel the Robot</h2>
+        <div class="illustration">🤖</div>
+        <div class="challenge-card">
+            <p>5. Pixel is making a strange sound. Do you think we 
+                <select id="q5">
+                    <option value="">--choose--</option>
+                    <option value="ought to">ought to</option>
+                    <option value="may">may</option>
+                </select> reboot his system?</p>
+            
+            <p>6. We 
+                <select id="q6">
+                    <option value="">--choose--</option>
+                    <option value="might">might</option>
+                    <option value="need to">need to</option>
+                </select> find a battery soon, or he will shut down forever.</p>
+        </div>
+    </section>
+
+    <button class="check-btn" onclick="checkAnswers()">RUN SYSTEM DIAGNOSTICS</button>
+
+    <div id="result" style="margin-top: 20px; text-align: center; font-family: 'Orbitron';"></div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const answers = {
+            q1: "must",
+            q2: "must not",
+            q3: "could",
+            q4: "can",
+            q5: "ought to",
+            q6: "need to"
+        };
+
+        let score = 0;
+        let total = 6;
+
+        for (let i = 1; i <= total; i++) {
+            let selected = document.getElementById('q' + i).value;
+            if (selected === answers['q' + i]) {
+                score++;
+            }
+        }
+
+        const resultDiv = document.getElementById('result');
+        if (score === total) {
+            resultDiv.innerHTML = `<span style="color: var(--primary-neon)">ACCESS GRANTED! 🔑 Score: ${score}/${total}. You escaped!</span>`;
+        } else {
+            resultDiv.innerHTML = `<span style="color: var(--danger-neon)">ACCESS DENIED! ❌ Score: ${score}/${total}. Check your Modals and try again!</span>`;
+        }
+    }
+</script>
+
+</body>
+</html>
