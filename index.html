@@ -3,236 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electra Ruins: Modals Adventure</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Cosmic Modals: The Final Riddles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-neon: #00f2ff;
-            --secondary-neon: #7000ff;
-            --danger-neon: #ff0055;
-            --bg-dark: #0a0b10;
-            --card-bg: #161b22;
+            --space-pink: #ff7eb3; --space-blue: #8ec5fc; --star-gold: #ffd700;
+            --nebula-purple: #e0c3fc; --bg-soft: #f8f9ff;
         }
-
         body {
-            background-color: var(--bg-dark);
-            color: #e6edf3;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            background-attachment: fixed; color: #4a4a4a; font-family: 'Quicksand', sans-serif;
+            margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;
         }
-
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            border: 2px solid var(--primary-neon);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: 15px;
+            max-width: 650px; width: 90%; background: rgba(255, 255, 255, 0.9);
+            padding: 30px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 4px solid var(--space-blue); text-align: center;
         }
-
-        h1, h2 {
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        h1 { color: var(--primary-neon); text-shadow: 0 0 10px var(--primary-neon); }
-        h2 { color: var(--secondary-neon); border-bottom: 1px solid var(--secondary-neon); padding-bottom: 10px; margin-top: 40px; }
-
-        .mission-box {
-            background: rgba(112, 0, 255, 0.1);
-            border-left: 5px solid var(--secondary-neon);
-            padding: 15px;
-            margin: 20px 0;
-            font-style: italic;
-        }
-
-        .challenge-card {
-            background: #1c2128;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
-            transition: transform 0.3s;
-        }
-
-        .challenge-card:hover {
-            transform: scale(1.02);
-            border-color: var(--primary-neon);
-        }
-
-        .instructions {
-            background: #0d1117;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px dashed var(--primary-neon);
-            margin-bottom: 20px;
-            font-weight: bold;
-            color: var(--primary-neon);
-        }
-
-        select {
-            background: #0d1117;
-            color: var(--primary-neon);
-            border: 1px solid var(--primary-neon);
-            padding: 5px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9em;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            background: var(--danger-neon);
-            color: white;
-            border-radius: 5px;
-            font-size: 0.8em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .check-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: transparent;
-            color: var(--primary-neon);
-            border: 2px solid var(--primary-neon);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: 0.3s;
-        }
-
-        .check-btn:hover {
-            background: var(--primary-neon);
-            color: var(--bg-dark);
-            box-shadow: 0 0 20px var(--primary-neon);
-        }
-
-        .illustration {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(45deg, #161b22, #30363d);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 3em;
-        }
+        h1 { font-family: 'Fredoka One', cursive; color: #5d5dff; }
+        .progress-bar { width: 100%; height: 12px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+        #progress-fill { height: 100%; background: linear-gradient(90deg, var(--space-pink), var(--space-blue)); width: 10%; transition: 0.5s; }
+        .section { display: none; animation: fadeIn 0.6s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .riddle-card { background: #fff; padding: 25px; border-radius: 20px; border: 3px dotted var(--space-pink); margin: 20px 0; font-style: italic; color: #555; }
+        .instruction { background: var(--nebula-purple); padding: 10px; border-radius: 15px; font-weight: bold; margin-bottom: 15px; }
+        input[type="text"] { padding: 10px; border-radius: 10px; border: 2px solid var(--space-blue); width: 60%; font-family: 'Quicksand'; text-align: center; font-weight: bold; }
+        .btn { background: var(--space-blue); color: white; border: none; padding: 12px 25px; border-radius: 50px; font-family: 'Fredoka One'; cursor: pointer; margin-top: 15px; }
+        #msg { margin-top: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🚀 Electra Ruins Adventure</h1>
-    <p style="text-align: center;">Mission: Master the Modals to Escape the City!</p>
+    <h1>✨ Cosmic Journey</h1>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
 
-    <div class="instructions">
-        SYSTEM OVERRIDE: Select the correct Modal or Semi-modal to unlock the next chamber. 
-        Read the scenarios carefully, Explorer!
+    <div id="game-content">
+        <div class="section active" id="rid1">
+            <div class="instruction">RIDDLE 1: THE LAW</div>
+            <div class="riddle-card">
+                "I am strong and firm, I leave no choice,<br>
+                In rules and laws, you hear my voice.<br>
+                If you enter the ship, you _____ have a key,<br>
+                Without me, a prisoner you shall be."
+            </div>
+            <input type="text" id="ans1" placeholder="Type the modal...">
+            <button class="btn" onclick="checkRiddle(1, 'must')">UNLOCK NEXT LORE</button>
+        </div>
+
+        <div class="section" id="rid2">
+            <div class="instruction">RIDDLE 2: THE ADVISOR</div>
+            <div class="riddle-card">
+                "I am not a command, just friendly light,<br>
+                To guide your path and make it right.<br>
+                'You _____ wear a coat,' I softly say,<br>
+                To keep the space-cold far away."
+            </div>
+            <input type="text" id="ans2" placeholder="Type the modal...">
+            <button class="btn" onclick="checkRiddle(2, 'should')">UNLOCK NEXT LORE</button>
+        </div>
+
+        <div class="section" id="rid3">
+            <div class="instruction">RIDDLE 3: THE POSSIBILITY</div>
+            <div class="riddle-card">
+                "I am a shadow, a 'maybe' in the sky,<br>
+                Not a certainty, just a chance nearby.<br>
+                It _____ rain stars, or it _____ stay dry,<br>
+                Look at the clouds before you fly."
+            </div>
+            <input type="text" id="ans3" placeholder="Type might or may...">
+            <button class="btn" onclick="checkRiddle(3, ['might', 'may'])">UNLOCK NEXT LORE</button>
+        </div>
+
+        <div class="section" id="rid4">
+            <div class="instruction">RIDDLE 4: THE PAST ABILITY</div>
+            <div class="riddle-card">
+                "In days of old, I had the power,<br>
+                To climb the moon's highest tower.<br>
+                I _____ swim in stars when I was young,<br>
+                Now that song has already been sung."
+            </div>
+            <input type="text" id="ans4" placeholder="Type the modal...">
+            <button class="btn" onclick="checkRiddle(4, 'could')">UNLOCK NEXT LORE</button>
+        </div>
+
+        <div class="section" id="rid5">
+            <div class="instruction">RIDDLE 5: THE POLITE REQUEST</div>
+            <div class="riddle-card">
+                "I am the key to a polite mind,<br>
+                The kindest word that you can find.<br>
+                '_____ you help me fix this broken wing?'<br>
+                Is the melody that I always sing."
+            </div>
+            <input type="text" id="ans5" placeholder="Type the modal...">
+            <button class="btn" onclick="checkRiddle(5, 'would')">FINISH ALL LEVELS</button>
+        </div>
+
+        <div class="section" id="victory">
+            <span style="font-size: 4em;">🌟</span>
+            <h2>CHAMPION OF ELECTRA!</h2>
+            <p>You have solved the riddles and mastered the Modals.</p>
+            <button class="btn" onclick="location.reload()">START NEW ADVENTURE</button>
+        </div>
     </div>
 
-    <section>
-        <h2>Challenge 1: The Control Panel</h2>
-        <div class="illustration">📟</div>
-        <div class="challenge-card">
-            <span class="status-badge">Danger Level: High</span>
-            <p>1. The blue button is glowing. It 
-                <select id="q1">
-                    <option value="">--choose--</option>
-                    <option value="must">must</option>
-                    <option value="can't">can't</option>
-                </select> be the power switch because the lights are flickering.</p>
-            
-            <p>2. The red button has a skull icon. We 
-                <select id="q2">
-                    <option value="">--choose--</option>
-                    <option value="don't have to">don't have to</option>
-                    <option value="must not">must not</option>
-                </select> press it under any circumstances!</p>
-        </div>
-    </section>
-
-    <section>
-        <h2>Challenge 2: Zero Gravity Chamber</h2>
-        <div class="illustration">👨‍🚀</div>
-        <div class="challenge-card">
-            <p>3. Be careful! The oxygen levels are low. We 
-                <select id="q3">
-                    <option value="">--choose--</option>
-                    <option value="could">could</option>
-                    <option value="would">would</option>
-                </select> run out of air if we stay too long.</p>
-            
-            <p>4. In this room, we 
-                <select id="q4">
-                    <option value="">--choose--</option>
-                    <option value="can">can</option>
-                    <option value="should">should</option>
-                </select> move heavy objects easily because there is no gravity.</p>
-        </div>
-    </section>
-
-    <section>
-        <h2>Challenge 3: Fixing Pixel the Robot</h2>
-        <div class="illustration">🤖</div>
-        <div class="challenge-card">
-            <p>5. Pixel is making a strange sound. Do you think we 
-                <select id="q5">
-                    <option value="">--choose--</option>
-                    <option value="ought to">ought to</option>
-                    <option value="may">may</option>
-                </select> reboot his system?</p>
-            
-            <p>6. We 
-                <select id="q6">
-                    <option value="">--choose--</option>
-                    <option value="might">might</option>
-                    <option value="need to">need to</option>
-                </select> find a battery soon, or he will shut down forever.</p>
-        </div>
-    </section>
-
-    <button class="check-btn" onclick="checkAnswers()">RUN SYSTEM DIAGNOSTICS</button>
-
-    <div id="result" style="margin-top: 20px; text-align: center; font-family: 'Orbitron';"></div>
+    <div id="msg"></div>
 </div>
 
 <script>
-    function checkAnswers() {
-        const answers = {
-            q1: "must",
-            q2: "must not",
-            q3: "could",
-            q4: "can",
-            q5: "ought to",
-            q6: "need to"
-        };
+    function checkRiddle(num, correctAns) {
+        let userAns = document.getElementById('ans' + num).value.toLowerCase().trim();
+        let isCorrect = false;
 
-        let score = 0;
-        let total = 6;
-
-        for (let i = 1; i <= total; i++) {
-            let selected = document.getElementById('q' + i).value;
-            if (selected === answers['q' + i]) {
-                score++;
-            }
+        if (Array.isArray(correctAns)) {
+            if (correctAns.includes(userAns)) isCorrect = true;
+        } else {
+            if (userAns === correctAns) isCorrect = true;
         }
 
-        const resultDiv = document.getElementById('result');
-        if (score === total) {
-            resultDiv.innerHTML = `<span style="color: var(--primary-neon)">ACCESS GRANTED! 🔑 Score: ${score}/${total}. You escaped!</span>`;
+        let m = document.getElementById('msg');
+        if (isCorrect) {
+            m.style.color = "green";
+            m.innerHTML = "✨ Correct! The star-gate opens...";
+            setTimeout(() => {
+                m.innerHTML = "";
+                document.getElementById('rid' + num).classList.remove('active');
+                let next = num + 1;
+                if (document.getElementById('rid' + next)) {
+                    document.getElementById('rid' + next).classList.add('active');
+                    document.getElementById('progress-fill').style.width = (next * 20) + "%";
+                } else {
+                    document.getElementById('victory').classList.add('active');
+                    document.getElementById('progress-fill').style.width = "100%";
+                }
+            }, 1200);
         } else {
-            resultDiv.innerHTML = `<span style="color: var(--danger-neon)">ACCESS DENIED! ❌ Score: ${score}/${total}. Check your Modals and try again!</span>`;
+            m.style.color = "red";
+            m.innerHTML = "❌ The stars are silent. Try another word!";
         }
     }
 </script>
